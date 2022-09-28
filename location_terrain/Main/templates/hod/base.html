@@ -13,14 +13,14 @@
       rel="icon"
       type="image/png"
       sizes="16x16"
-      href="{% static "../assets/images/favicon.png" %}"
+      href="{% static "../../assets/images/favicon.png" %}"
     />
     <title>
       Tableau de bord
     </title>
     <!-- This page CSS -->
     <!-- chartist CSS -->
-    <link href="{% static "../assets/node_modules/morrisjs/morris.css" %}" rel="stylesheet" />
+    <link href="{% static "../../assets/node_modules/morrisjs/morris.css" %}" rel="stylesheet" />
     <!--Toaster Popup message CSS -->
     <link
       href="{% static "../assets/node_modules/toast-master/css/jquery.toast.css" %}"
@@ -49,9 +49,9 @@
       </div>
     </div> {% endcomment %}
     <div id="main-wrapper">
-
-    {% block main %}
-    {% endblock main %}
+    {% include 'hod/navbar.html' %}
+    {% include 'hod/sidebar.html' %}
+    {% block main %}{% endblock main %}
 
     </div>
 
