@@ -51,6 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'Main.LoginCheckMiddleWare.LoginCheckMiddleWare'
 ]
 
 ROOT_URLCONF = 'location_terrain.urls'
@@ -135,4 +136,4 @@ STATIC_ROOT=os.path.join(BASE_DIR,"static")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL="Main.CustomUser"
-AUTHENTICATION_BACKENDS=['Main.EmailBackEnd.EmailBackEnd']
+AUTHENTICATION_BACKENDS=['Main.EmailBackend.EmailBackEnd']
