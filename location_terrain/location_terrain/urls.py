@@ -28,9 +28,12 @@ urlpatterns = [
     path('doLogin',views.doLogin,name="do_login"),
 
     #hod urls
-    path('admin/', hodviews.index,name="admin_home"),*
+    path('admin/', hodviews.index,name="admin_home"),
+    path('liste_gerant', hodviews.liste_gerant,name="liste_gerant"),
+    path('liste_client', hodviews.liste_client,name="liste_client"),
     #gerant urls
     path('gerant', gerantviews.gerant_home,name="gerant_home"),
+    
     #client urls
     path('', clientviews.client_home,name="client_home"),
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)+static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
