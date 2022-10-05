@@ -23,7 +23,7 @@ from Main import views,hodviews,gerantviews,clientviews
 urlpatterns = [
     # path('admin/', admin.site.urls),
     #login urls
-    path('login', views.login_vibe,name="login"),
+    path('login', views.login_page,name="login"),
     path('logout_user', views.logout_user,name="logout"),
     path('doLogin',views.doLogin,name="do_login"),
 
