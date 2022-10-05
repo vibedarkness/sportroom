@@ -76,10 +76,11 @@
                 </li> {% endcomment %}
 
                 <li class="nav-item">
-                    {% url 'manage_staff' as manage_staff %}
-                    {% url 'edit_staff' staff_id as edit_staff %}
-                    <a href="{{manage_staff}}"
-                        class="nav-link {% if manage_staff == request.path or request.path == edit_staff %} active {% endif %}">
+                     {% url 'add_gerant' as add_gerant %}
+                    {% comment %}{% url 'edit_staff' staff_id as edit_staff %} {% endcomment %}
+                    
+                    <a href="{{add_gerant}}"
+                        class="nav-link {% if add_gerant == request.path %} active {% endif %}">
                         <i class="nav-icon fas fa-tasks"></i>
                         <p>
                             Propriétaire

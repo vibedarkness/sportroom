@@ -1,7 +1,9 @@
+
 from django.db import models
 from django.contrib.auth.models import  AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from matplotlib.pyplot import cla
 # Create your models here.
 
 
@@ -24,6 +26,8 @@ class Gerant(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
     objects=models.Manager()
+    def __str__(self):
+        return self.admin.last_name + " " + self.admin.first_name
 
 class Client(models.Model):
     id=models.AutoField(primary_key=True)
@@ -34,6 +38,49 @@ class Client(models.Model):
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now_add=True)
     objects = models.Manager()
+
+    def __str__(self):
+        return self.admin.last_name + " " + self.admin.first_name
+
+class Calendrier(models.Model):
+    date=models.DateField()
+    heure_debut=models.TimeField()
+    heure_fin=models.TimeField()
+
+class Reservation(models.Model):
+    gerant=models.ForeignKey(Gerant, on_delete=models.CASCADE)
+    client=models.ForeignKey(Client, on_delete=models.CASCADE)
+    calendrier=models.ForeignKey(Calendrier, on_delete=models.CASCADE)
+
+class Terrain(models.Model):
+    gerant=models.ForeignKey(Gerant, on_delete=models.CASCADE)
+    reservation=models.ForeignKey(Reservation, on_delete=models.CASCADE)
+    nom=models.CharField(max_length=100)
+    adresse=models.CharField(max_length=300)
+    image=models.ImageField()
+    surface=models.IntegerField()
+    description=models.TextField()
+    longitude=models.DecimalField(max_digits=9, decimal_places=6) 
+    latitude=models.DecimalField(max_digits=9, decimal_places=6) 
+
+class Localite(models.Model):
+    nom = models.CharField(max_length=100)
+    terrain=models.ForeignKey(Terrain, on_delete=models.CASCADE)
+
+class Publication(models.Model):
+    gerant=models.ForeignKey(Gerant, on_delete=models.CASCADE)
+    description=models.TextField()
+    date_publication=models.DateTimeField()
+
+class NotificationGerant(models.Model):
+    gerant = models.ForeignKey(Gerant, on_delete=models.CASCADE)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+
+
 
 
 

@@ -20,6 +20,8 @@ from location_terrain import settings
 from Main import views,hodviews,gerantviews,clientviews
 
 
+
+
 urlpatterns = [
     # path('admin/', admin.site.urls),
     #login urls
@@ -27,10 +29,13 @@ urlpatterns = [
     path('logout_user', views.logout_user,name="logout"),
     path('doLogin',views.doLogin,name="do_login"),
 
+
     #hod urls
     path('admin/', hodviews.index,name="admin_home"),
-    path('liste_gerant', hodviews.liste_gerant,name="liste_gerant"),
-    path('liste_client', hodviews.liste_client,name="liste_client"),
+    # path('liste_gerant', hodviews.liste_gerant,name="liste_gerant"),
+    # path('liste_client', hodviews.liste_client,name="liste_client"),
+    path("gerant/add", hodviews.add_gerant, name='add_gerant'),
+
     #gerant urls
     path('gerant', gerantviews.gerant_home,name="gerant_home"),
     
